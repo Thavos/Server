@@ -53,4 +53,4 @@ socketIO.on('connection', function(socket){
 });
 
 
-//setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+setInterval(() => io.emit('time', new Date().toTimeString()) + 'PORT : ' + PORT, 1000);
