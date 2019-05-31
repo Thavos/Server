@@ -1,7 +1,6 @@
 {
-  "name": "GameServer",
+  "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -15,14 +14,17 @@
     "url": "git+https://github.com/Thavos/Server.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Thavos",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Thavos/Server/issues"
   },
   "homepage": "https://github.com/Thavos/Server#readme",
   "dependencies": {
-    "express": "4.17.1",
+    "express": "^4.17.1",
+    "shortid": "^2.2.14",
     "socket.io": "2.2.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
