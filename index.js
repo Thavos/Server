@@ -46,9 +46,9 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(){
         console.log('Disconected');
-        /*delete Players[thisPlayerID];
+        delete Players[thisPlayerID];
         delete Sockets[thisPlayerID];
-        socket.broadcast.emit('disconnected', player);*/
+        socket.broadcast.emit('disconnected', player);
     });
 });
 
