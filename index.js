@@ -18,7 +18,7 @@ const Player = require('./Classes/player');
 let Players = [];
 let Sockets = [];
 
-io.on('connection', function(){
+io.on('connection', function(socket){
     console.log('Conetion made')
 
     let player = new Player();
