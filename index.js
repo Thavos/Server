@@ -18,9 +18,9 @@ const Player = require('./Classes/player');
 let Players = [];
 let Sockets = [];
 
-socketIO.on('connection', function(socket){
+io.on('connection', function(socket){
     console.log('Conetion made')
-
+/*
     let player = new Player();
     let thisPlayerID = player.id;
 
@@ -43,12 +43,12 @@ socketIO.on('connection', function(socket){
 
         socket.broadcast.emit('updatePos', player);
     });
-
+*/
     socket.on('disconnect', function(){
         console.log('Disconected');
-        delete Players[thisPlayerID];
+        /*delete Players[thisPlayerID];
         delete Sockets[thisPlayerID];
-        socket.broadcast.emit('disconnected', player);
+        socket.broadcast.emit('disconnected', player);*/
     });
 });
 
