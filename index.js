@@ -20,7 +20,7 @@ let Sockets = [];
 
 io.on('connection', function(socket){
     console.log('Conetion made')
-/*
+
     let player = new Player();
     let thisPlayerID = player.id;
 
@@ -43,7 +43,7 @@ io.on('connection', function(socket){
 
         socket.broadcast.emit('updatePos', player);
     });
-*/
+
     socket.on('disconnect', function(){
         console.log('Disconected');
         /*delete Players[thisPlayerID];
