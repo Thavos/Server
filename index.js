@@ -17,7 +17,7 @@ const Player = require('./Classes/player');
 
 let Players = [];
 let Sockets = [];
-
+/*
 socketIO.on('connection', function(socket){
     console.log('Conetion made')
 
@@ -51,6 +51,6 @@ socketIO.on('connection', function(socket){
         socket.broadcast.emit('disconnected', player);
     });
 });
-
+*/
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
