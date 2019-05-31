@@ -13,9 +13,44 @@ const server = express()
 
 const io = socketIO(server);
 
-io.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
+const Player = require('./Classes/player');
+
+let Players = [];
+let Sockets = [];
+
+socketIO.on('connection', function(socket){
+    console.log('Conetion made')
+
+    let player = new Player();
+    let thisPlayerID = player.id;
+
+    Players[thisPlayerID] = player;
+    Sockets[thisPlayerID] = socket;
+ 
+    socket.emit('register', {id : thisPlayerID})
+    socket.emit('spawn', player);
+    socket.broadcast.emit('spawn', player);
+
+    for(let playerID in Players){
+        if(playerID != thisPlayerID){
+            socket.emit('spawn', Players[playerID]);
+        }
+    }
+
+    socket.on('updatePos', function(data){
+        player.position.x = data.position.x;
+        player.position.y = data.position.y;
+
+        socket.broadcast.emit('updatePos', player);
+    });
+
+    socket.on('disconnect', function(){
+        console.log('Disconected');
+        delete Players[thisPlayerID];
+        delete Sockets[thisPlayerID];
+        socket.broadcast.emit('disconnected', player);
+    });
 });
 
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+
+//setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
