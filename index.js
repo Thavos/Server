@@ -41,7 +41,9 @@ io.on('connection', function(socket){
         player.position.x = data.position.x;
         player.position.y = data.position.y;
 
-        socket.broadcast.emit('updatePos', player);
+        let d = { id : thisPlayerID , position : player.position };
+
+        socket.broadcast.emit('updatePos', d);
     });
 
     socket.on('disconnect', function(){
@@ -51,6 +53,3 @@ io.on('connection', function(socket){
         socket.broadcast.emit('disconnected', player);
     });
 });
-
-
-//setInterval(() => io.emit('time', 'Port : ' + PORT), 1000);
